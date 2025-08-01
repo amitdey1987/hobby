@@ -5,3 +5,4 @@
 *.sln
 */pub*
 *.vscode*
+*/launchSettings.json
