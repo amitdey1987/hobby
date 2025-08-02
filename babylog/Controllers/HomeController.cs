@@ -18,21 +18,19 @@ public class HomeController : Controller
         container = database.GetContainer("pranaydey").ReadContainerAsync().GetAwaiter().GetResult();
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
         DayLog daylog = null;
         try
         {
-            daylog = container.ReadItemAsync<DayLog>("1", new PartitionKey("1")).GetAwaiter().GetResult();
-            daylog = new DayLog(id: daylog.id, medicine: daylog.medicine + 0.5f);
+            daylog = (await container.ReadItemAsync<DayLog>("1", new PartitionKey("1")));
         }
         catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
         {
             daylog = new DayLog(id: daylog.id, medicine: 0.0f);
+            daylog = (await container.UpsertItemAsync(daylog, new PartitionKey(daylog.id)));
         }
-        daylog = container.UpsertItemAsync(daylog, new PartitionKey(daylog.id)).GetAwaiter().GetResult();
-        ViewData["medicine"] = daylog.medicine;
-        return View();
+        return View(daylog);
     }
 
     public IActionResult Privacy()

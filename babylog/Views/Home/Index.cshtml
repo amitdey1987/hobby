@@ -1,9 +1,11 @@
-﻿@{
+﻿@model babylog.Models.DayLog
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome Home</h1>
-    <p>medicine: @ViewData["medicine"]</p>
+    <p>medicine: @Html.DisplayFor(model => model.medicine)</p>
     <p>log: @ViewData["log"]</p>
 </div>
