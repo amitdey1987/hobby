@@ -1,3 +1,6 @@
 namespace babylog.Controllers;
 
-const string ConnectionString = "";
+class Keys
+{
+    public const string ConnectionString = "";
+}

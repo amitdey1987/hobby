@@ -13,7 +13,7 @@ public class HomeController : Controller
     {
         logger = logger;
 
-        CosmosClient client = new(connectionString: ConnectionString);
+        CosmosClient client = new(connectionString: Keys.ConnectionString);
         Database database = client.GetDatabase("pranaydey").ReadAsync().GetAwaiter().GetResult();
         container = database.GetContainer("pranaydey").ReadContainerAsync().GetAwaiter().GetResult();
     }
