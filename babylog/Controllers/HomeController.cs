@@ -12,23 +12,41 @@ public class HomeController : Controller
     public HomeController(ILogger<HomeController> logger)
     {
         logger = logger;
-
         CosmosClient client = new(connectionString: Keys.ConnectionString);
         Database database = client.GetDatabase("pranaydey").ReadAsync().GetAwaiter().GetResult();
         container = database.GetContainer("pranaydey").ReadContainerAsync().GetAwaiter().GetResult();
     }
 
+    [HttpPost]
+    public async Task<IActionResult> Index(DayLog daylog)
+    {
+        try
+        {
+            daylog = await container.UpsertItemAsync(daylog, new PartitionKey(daylog.id));
+        }
+        catch (Exception e)
+        {
+            ViewData["log"] = e.Message;
+        }
+        return View(daylog);
+    }
+
     public async Task<IActionResult> Index()
     {
         DayLog daylog = null;
-        try
+        try{
+            try
+            {
+                daylog = await container.ReadItemAsync<DayLog>("1", new PartitionKey("1"));
+            }
+            catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                daylog = new DayLog(id: daylog.id, medicine: 0.0f);
+                daylog = await container.UpsertItemAsync(daylog, new PartitionKey(daylog.id));
+            }
+        } catch (Exception e)
         {
-            daylog = (await container.ReadItemAsync<DayLog>("1", new PartitionKey("1")));
-        }
-        catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
-        {
-            daylog = new DayLog(id: daylog.id, medicine: 0.0f);
-            daylog = (await container.UpsertItemAsync(daylog, new PartitionKey(daylog.id)));
+            ViewData["log"] = e.Message;
         }
         return View(daylog);
     }

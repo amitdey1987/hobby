@@ -5,7 +5,21 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome Home</h1>
-    <p>medicine: @Html.DisplayFor(model => model.medicine)</p>
+    <form asp-action="Index" method="post">
+        <input type="hidden" asp-for="id" />
+        <table>
+            <tr>
+                <td>                
+                    <label asp-for="medicine"></label>
+                </td>
+                <td> 
+                    <input asp-for="medicine"/>               
+                </td>
+                <td>   
+                    <input type="submit" value="Save"  />             
+                </td>
+            </tr>
+        </table>
+    </form>
     <p>log: @ViewData["log"]</p>
 </div>
