@@ -3,23 +3,89 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-
 <div class="text-center">
-    <form asp-action="Index" method="post">
-        <input type="hidden" asp-for="id" />
-        <table>
-            <tr>
-                <td>                
-                    <label asp-for="medicine"></label>
-                </td>
-                <td> 
-                    <input asp-for="medicine"/>               
-                </td>
-                <td>   
-                    <input type="submit" value="Save"  />             
-                </td>
-            </tr>
-        </table>
-    </form>
+            <form asp-action="Index" method="post">
+                <input type="hidden" asp-for="id" />  
+                <table>
+                    <tr>
+                        <td>                
+                            Medicine
+                        </td>
+                        <td> 
+                            <input asp-for="medicine"/>               
+                        </td>
+                    </tr>
+                    <table>
+                        <tr>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td>                
+                                            Wake
+                                        </td>
+                                        <td> 
+                                            <input type="time" asp-for="wakeUpTime"/>                
+                                        </td>
+                                    </tr>
+                                    <tr><td>Nap 1</td></tr>
+                                    <tr>
+                                        <td>                
+                                            Sleep
+                                        </td>
+                                        <td> 
+                                            <input type="time" asp-for="nap1SleepTime"/>                
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>                
+                                            Wake
+                                        </td>
+                                        <td> 
+                                            <input type="time" asp-for="nap1WakeTime"/>                
+                                        </td>
+                                    </tr>
+                                    <tr><td>Nap 2</td></tr>
+                                    <tr>
+                                        <td>                
+                                            Sleep
+                                        </td>
+                                        <td> 
+                                            <input type="time" asp-for="nap2SleepTime"/>                
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>                
+                                            Wake
+                                        </td>
+                                        <td> 
+                                            <input type="time" asp-for="nap2WakeTime"/>                
+                                        </td>
+                                    </tr>
+                                    <tr><td>Nap 3</td></tr>
+                                    <tr>
+                                        <td>                
+                                            Sleep
+                                        </td>
+                                        <td> 
+                                            <input type="time" asp-for="nap3SleepTime"/>                
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>                
+                                            Wake
+                                        </td>
+                                        <td> 
+                                            <input type="time" asp-for="nap3WakeTime"/>                
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                </table>   
+                <input type="submit" value="Save"  />
+            </form>
+        
     <p>log: @ViewData["log"]</p>
 </div>

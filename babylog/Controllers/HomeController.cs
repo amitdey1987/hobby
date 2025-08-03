@@ -26,7 +26,7 @@ public class HomeController : Controller
         }
         catch (Exception e)
         {
-            ViewData["log"] = e.Message;
+            ViewData["log"] = "post : " + daylog.id + "," + daylog.medicine + "," + daylog.wakeUpTime + " - " + e.Message;
         }
         return View(daylog);
     }
@@ -41,12 +41,12 @@ public class HomeController : Controller
             }
             catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
-                daylog = new DayLog(id: daylog.id, medicine: 0.0f);
+                daylog = new DayLog { id = "1", medicine = 0, wakeUpTime = "8 AM" };
                 daylog = await container.UpsertItemAsync(daylog, new PartitionKey(daylog.id));
             }
         } catch (Exception e)
         {
-            ViewData["log"] = e.Message;
+            ViewData["log"] = "post : " + daylog.id + "," + daylog.medicine + "," + daylog.wakeUpTime + " - " + e.Message;
         }
         return View(daylog);
     }
