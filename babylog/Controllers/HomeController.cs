@@ -19,7 +19,16 @@ public class HomeController : Controller
 
     private string GetKey()
     {
-        return System.DateTime.Now.ToLocalTime().ToShortDateString();
+        TimeZoneInfo pacificTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time");
+        DateTime pacificTimeZoneNow = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, pacificTimeZone);
+        return pacificTimeZoneNow.ToShortDateString();
+    }
+
+    private string GetTime()
+    {
+        TimeZoneInfo pacificTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time");
+        DateTime pacificTimeZoneNow = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, pacificTimeZone);
+        return pacificTimeZoneNow.TimeOfDay.ToString(@"hh\:mm");
     }
 
     [HttpPost]
@@ -34,6 +43,8 @@ public class HomeController : Controller
         {
             ViewData["log"] = "post : " + daylog.id + "," + daylog.medicine + "," + daylog.wakeUpTime + " - " + e.Message;
         }
+        ViewData["Date"] = key;
+        ViewData["Time"] = GetTime();
         return View(daylog);
     }
 
@@ -55,6 +66,8 @@ public class HomeController : Controller
         {
             ViewData["log"] = "post : " + daylog.id + "," + daylog.medicine + "," + daylog.wakeUpTime + " - " + e.Message;
         }
+        ViewData["Date"] = key;
+        ViewData["Time"] = GetTime();
         return View(daylog);
     }
 

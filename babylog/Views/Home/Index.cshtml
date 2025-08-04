@@ -8,312 +8,307 @@
                 <input type="hidden" asp-for="id" />  
                 <table>
                     <tr>
+                        <td>
+                            Date : @ViewData["Date"]
+                        </td>
+                        <td>
+                            Time : @ViewData["Time"]
+                        </td>
+                    </tr>
+                    <tr>
                         <td>                
                             Medicine
                         </td>
                         <td> 
-                            <input asp-for="medicine" width="50"/>               
+                            <input asp-for="medicine" Size="2"/>
                         </td>
                     </tr>
-                    <table>
-                        <tr>
-                            <td>
-                                <table border="1">
+                </table> 
+                <table>
+                    <tr>
+                        <td>
+                            <b>Nap</b>
+                            <table border="1">                                
+                                <tr>                                        
+                                    <td>                
+                                        W
+                                    </td>
+                                    <td> 
+                                        <input type="time" asp-for="wakeUpTime"/>                
+                                    </td>
+                                </tr>
+                                <tr><td>1</td></tr>
+                                <tr>
+                                    <td>                
+                                        S
+                                    </td>
+                                    <td> 
+                                        <input type="time" asp-for="nap1SleepTime"/>                
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>                
+                                        W
+                                    </td>
+                                    <td> 
+                                        <input type="time" asp-for="nap1WakeTime"/>                
+                                    </td>
+                                </tr>
+                                <tr><td>2</td></tr>
+                                <tr>
+                                    <td>                
+                                        S
+                                    </td>
+                                    <td> 
+                                        <input type="time" asp-for="nap2SleepTime"/>                
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>                
+                                        W
+                                    </td>
+                                    <td> 
+                                        <input type="time" asp-for="nap2WakeTime"/>                
+                                    </td>
+                                </tr>
+                                <tr><td>3</td></tr>
+                                <tr>
+                                    <td>                
+                                        S
+                                    </td>
+                                    <td> 
+                                        <input type="time" asp-for="nap3SleepTime"/>                
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>                
+                                        W
+                                    </td>
+                                    <td> 
+                                        <input type="time" asp-for="nap3WakeTime"/>                
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <b>Feed</b>
+                            <table  border="1" bgcolor="#00FF00">
+                                <tr>
+                                    <td><input type="time" asp-for="feed1Time"/></td>
+                                    <td>
+                                        <select asp-for="feed1Type">
+                                            <option value=""></option>
+                                            <option value="Mother">Mother</option>
+                                            <option value="Formula">Formula</option>
+                                        </select>
+                                    </td>
+                                    <td><input asp-for="feed1Quantity" Size="1"/></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="time" asp-for="feed2Time"/></td>
+                                    <td>
+                                        <select asp-for="feed2Type">
+                                            <option value=""></option>
+                                            <option value="Mother">Mother</option>
+                                            <option value="Formula">Formula</option>
+                                        </select>
+                                    </td>
+                                    <td><input asp-for="feed2Quantity" Size="1"/></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="time" asp-for="feed3Time"/></td>
+                                    <td>
+                                        <select asp-for="feed3Type">
+                                            <option value=""></option>
+                                            <option value="Mother">Mother</option>
+                                            <option value="Formula">Formula</option>
+                                        </select>
+                                    </td>
+                                    <td><input asp-for="feed3Quantity" Size="1"/></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="time" asp-for="feed4Time"/></td>
+                                    <td>
+                                        <select asp-for="feed4Type">
+                                            <option value=""></option>
+                                            <option value="Mother">Mother</option>
+                                            <option value="Formula">Formula</option>
+                                        </select>
+                                    </td>
+                                    <td><input asp-for="feed4Quantity" Size="1"/></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="time" asp-for="feed5Time"/></td>
+                                    <td>
+                                        <select asp-for="feed5Type">
+                                            <option value=""></option>
+                                            <option value="Mother">Mother</option>
+                                            <option value="Formula">Formula</option>
+                                        </select>
+                                    </td>
+                                    <td><input asp-for="feed5Quantity" Size="1"/></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="time" asp-for="feed6Time"/></td>
+                                    <td>
+                                        <select asp-for="feed6Type">
+                                            <option value=""></option>
+                                            <option value="Mother">Mother</option>
+                                            <option value="Formula">Formula</option>
+                                        </select>
+                                    </td>
+                                    <td><input asp-for="feed6Quantity" Size="1"/></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="time" asp-for="feed7Time"/></td>
+                                    <td>
+                                        <select asp-for="feed7Type">
+                                            <option value=""></option>
+                                            <option value="Mother">Mother</option>
+                                            <option value="Formula">Formula</option>
+                                        </select>
+                                    </td>
+                                    <td><input asp-for="feed7Quantity" Size="1"/></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="time" asp-for="feed8Time"/></td>
+                                    <td>
+                                        <select asp-for="feed8Type">
+                                            <option value=""></option>
+                                            <option value="Mother">Mother</option>
+                                            <option value="Formula">Formula</option>
+                                        </select>
+                                    </td>
+                                    <td><input asp-for="feed8Quantity" Size="1"/></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="time" asp-for="feed9Time"/></td>
+                                    <td>
+                                        <select asp-for="feed9Type">
+                                            <option value=""></option>
+                                            <option value="Mother">Mother</option>
+                                            <option value="Formula">Formula</option>
+                                        </select>
+                                    </td>
+                                    <td><input asp-for="feed9Quantity" Size="1"/></td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <b>Diaper</b>
+                            <table  border="1">
+                                <tr>
+                                    <td>
+                                        <input type="time" asp-for="diaper1Time"/>
+                                    </td>
+                                    <td>
+                                        <select asp-for="diaper1Type">
+                                            <option value=""></option>
+                                            <option value="Pee">Pee</option>
+                                            <option value="Poo">Poo</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="time" asp-for="diaper2Time"/>
+                                    </td>
+                                    <td>
+                                        <select  asp-for="diaper2Type">
+                                            <option value=""></option>
+                                            <option value="Pee">Pee</option>
+                                            <option value="Poo">Poo</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="time" asp-for="diaper3Time"/>
+                                    </td>
+                                    <td>
+                                        <select asp-for="diaper3Type">
+                                            <option value=""></option>
+                                            <option value="Pee">Pee</option>
+                                            <option value="Poo">Poo</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="time" asp-for="diaper4Time"/>
+                                    </td>
+                                    <td>
+                                        <select asp-for="diaper4Type">
+                                            <option value=""></option>
+                                            <option value="Pee">Pee</option>
+                                            <option value="Poo">Poo</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="time" asp-for="diaper5Time"/>
+                                    </td>
+                                    <td>
+                                        <select asp-for="diaper5Type">
+                                            <option value=""></option>
+                                            <option value="Pee">Pee</option>
+                                            <option value="Poo">Poo</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="time" asp-for="diaper6Time"/>
+                                    </td>
+                                    <td>
+                                        <select asp-for="diaper6Type">
+                                            <option value=""></option>
+                                            <option value="Pee">Pee</option>
+                                            <option value="Poo">Poo</option>
+                                        </select>
+                                    </td>
+                                </tr>
                                     <tr>
-                                        <th>
-                                            Nap
-                                        </th>
-                                    </tr>
-                                    <tr>                                        
-                                        <td>                
-                                            Wake
-                                        </td>
-                                        <td> 
-                                            <input type="time" asp-for="wakeUpTime"/>                
-                                        </td>
-                                    </tr>
-                                    <tr><td>Nap 1</td></tr>
+                                    <td>
+                                        <input type="time" asp-for="diaper7Time"/>
+                                    </td>
+                                    <td>
+                                        <select asp-for="diaper7Type">
+                                            <option value=""></option>
+                                            <option value="Pee">Pee</option>
+                                            <option value="Poo">Poo</option>
+                                        </select>
+                                    </td>
+                                </tr>
                                     <tr>
-                                        <td>                
-                                            Sleep
-                                        </td>
-                                        <td> 
-                                            <input type="time" asp-for="nap1SleepTime"/>                
-                                        </td>
-                                    </tr>
+                                    <td>
+                                        <input type="time" asp-for="diaper8Time"/>
+                                    </td>
+                                    <td>
+                                        <select asp-for="diaper8Type">
+                                            <option value=""></option>
+                                            <option value="Pee">Pee</option>
+                                            <option value="Poo">Poo</option>
+                                        </select>
+                                    </td>
+                                </tr>
                                     <tr>
-                                        <td>                
-                                            Wake
-                                        </td>
-                                        <td> 
-                                            <input type="time" asp-for="nap1WakeTime"/>                
-                                        </td>
-                                    </tr>
-                                    <tr><td>Nap 2</td></tr>
-                                    <tr>
-                                        <td>                
-                                            Sleep
-                                        </td>
-                                        <td> 
-                                            <input type="time" asp-for="nap2SleepTime"/>                
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>                
-                                            Wake
-                                        </td>
-                                        <td> 
-                                            <input type="time" asp-for="nap2WakeTime"/>                
-                                        </td>
-                                    </tr>
-                                    <tr><td>Nap 3</td></tr>
-                                    <tr>
-                                        <td>                
-                                            Sleep
-                                        </td>
-                                        <td> 
-                                            <input type="time" asp-for="nap3SleepTime"/>                
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>                
-                                            Wake
-                                        </td>
-                                        <td> 
-                                            <input type="time" asp-for="nap3WakeTime"/>                
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>
-                            <td>
-                                <table>
-                                     <tr>
-                                        <th>
-                                            Feed
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="time" asp-for="feed1Time"/></td>
-                                        <td>
-                                            <select asp-for="feed1Type">
-                                                <option value=""></option>
-                                                <option value="Mother">Mother</option>
-                                                <option value="Formula">Formula</option>
-                                            </select>
-                                        </td>
-                                        <td><input asp-for="feed1Quantity" width="50"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="time" asp-for="feed2Time"/></td>
-                                        <td>
-                                            <select asp-for="feed2Type">
-                                                <option value=""></option>
-                                                <option value="Mother">Mother</option>
-                                                <option value="Formula">Formula</option>
-                                            </select>
-                                        </td>
-                                        <td><input asp-for="feed2Quantity" width="50"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="time" asp-for="feed3Time"/></td>
-                                        <td>
-                                            <select asp-for="feed3Type">
-                                                <option value=""></option>
-                                                <option value="Mother">Mother</option>
-                                                <option value="Formula">Formula</option>
-                                            </select>
-                                        </td>
-                                        <td><input asp-for="feed3Quantity" width="50"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="time" asp-for="feed4Time"/></td>
-                                        <td>
-                                            <select asp-for="feed4Type">
-                                                <option value=""></option>
-                                                <option value="Mother">Mother</option>
-                                                <option value="Formula">Formula</option>
-                                            </select>
-                                        </td>
-                                        <td><input asp-for="feed4Quantity" width="50"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="time" asp-for="feed5Time"/></td>
-                                        <td>
-                                            <select asp-for="feed5Type">
-                                                <option value=""></option>
-                                                <option value="Mother">Mother</option>
-                                                <option value="Formula">Formula</option>
-                                            </select>
-                                        </td>
-                                        <td><input asp-for="feed5Quantity" width="50"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="time" asp-for="feed6Time"/></td>
-                                        <td>
-                                            <select asp-for="feed6Type">
-                                                <option value=""></option>
-                                                <option value="Mother">Mother</option>
-                                                <option value="Formula">Formula</option>
-                                            </select>
-                                        </td>
-                                        <td><input asp-for="feed6Quantity" width="50"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="time" asp-for="feed7Time"/></td>
-                                        <td>
-                                            <select asp-for="feed7Type">
-                                                <option value=""></option>
-                                                <option value="Mother">Mother</option>
-                                                <option value="Formula">Formula</option>
-                                            </select>
-                                        </td>
-                                        <td><input asp-for="feed7Quantity" width="50"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="time" asp-for="feed8Time"/></td>
-                                        <td>
-                                            <select asp-for="feed8Type">
-                                                <option value=""></option>
-                                                <option value="Mother">Mother</option>
-                                                <option value="Formula">Formula</option>
-                                            </select>
-                                        </td>
-                                        <td><input asp-for="feed8Quantity" width="50"/></td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="time" asp-for="feed9Time"/></td>
-                                        <td>
-                                            <select asp-for="feed9Type">
-                                                <option value=""></option>
-                                                <option value="Mother">Mother</option>
-                                                <option value="Formula">Formula</option>
-                                            </select>
-                                        </td>
-                                        <td><input asp-for="feed9Quantity" width="50"/></td>
-                                    </tr>
-                                </table>
-                            </td>
-                            <td>
-                                <table>
-                                     <tr>
-                                        <th>
-                                            Diaper
-                                        </th>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input type="time" asp-for="diaper1Time"/>
-                                        </td>
-                                        <td>
-                                            <select asp-for="diaper1Type">
-                                                <option value=""></option>
-                                                <option value="Pee">Pee</option>
-                                                <option value="Poo">Poo</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input type="time" asp-for="diaper2Time"/>
-                                        </td>
-                                        <td>
-                                            <select  asp-for="diaper2Type">
-                                                <option value=""></option>
-                                                <option value="Pee">Pee</option>
-                                                <option value="Poo">Poo</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input type="time" asp-for="diaper3Time"/>
-                                        </td>
-                                        <td>
-                                            <select asp-for="diaper3Type">
-                                                <option value=""></option>
-                                                <option value="Pee">Pee</option>
-                                                <option value="Poo">Poo</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input type="time" asp-for="diaper4Time"/>
-                                        </td>
-                                        <td>
-                                            <select asp-for="diaper4Type">
-                                                <option value=""></option>
-                                                <option value="Pee">Pee</option>
-                                                <option value="Poo">Poo</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input type="time" asp-for="diaper5Time"/>
-                                        </td>
-                                        <td>
-                                            <select asp-for="diaper5Type">
-                                                <option value=""></option>
-                                                <option value="Pee">Pee</option>
-                                                <option value="Poo">Poo</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input type="time" asp-for="diaper6Time"/>
-                                        </td>
-                                        <td>
-                                            <select asp-for="diaper6Type">
-                                                <option value=""></option>
-                                                <option value="Pee">Pee</option>
-                                                <option value="Poo">Poo</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                     <tr>
-                                        <td>
-                                            <input type="time" asp-for="diaper7Time"/>
-                                        </td>
-                                        <td>
-                                            <select asp-for="diaper7Type">
-                                                <option value=""></option>
-                                                <option value="Pee">Pee</option>
-                                                <option value="Poo">Poo</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                     <tr>
-                                        <td>
-                                            <input type="time" asp-for="diaper8Time"/>
-                                        </td>
-                                        <td>
-                                            <select asp-for="diaper8Type">
-                                                <option value=""></option>
-                                                <option value="Pee">Pee</option>
-                                                <option value="Poo">Poo</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                     <tr>
-                                        <td>
-                                            <input type="time" asp-for="diaper9Time"/>
-                                        </td>
-                                        <td>
-                                            <select asp-for="diaper9Type">
-                                                <option value=""></option>
-                                                <option value="Pee">Pee</option>
-                                                <option value="Poo">Poo</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                    </table>
-                    
-                </table>   
+                                    <td>
+                                        <input type="time" asp-for="diaper9Time"/>
+                                    </td>
+                                    <td>
+                                        <select asp-for="diaper9Type">
+                                            <option value=""></option>
+                                            <option value="Pee">Pee</option>
+                                            <option value="Poo">Poo</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
                 <input type="submit" value="Save"  />
             </form>
         
