@@ -17,12 +17,18 @@ public class HomeController : Controller
         container = database.GetContainer("pranaydey").ReadContainerAsync().GetAwaiter().GetResult();
     }
 
+    private string GetKey()
+    {
+        return System.DateTime.Now.ToLocalTime().ToShortDateString();
+    }
+
     [HttpPost]
     public async Task<IActionResult> Index(DayLog daylog)
     {
+        var key = GetKey();
         try
         {
-            daylog = await container.UpsertItemAsync(daylog, new PartitionKey(daylog.id));
+            daylog = await container.UpsertItemAsync(daylog, new PartitionKey(key));
         }
         catch (Exception e)
         {
@@ -33,15 +39,16 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
     {
+        var key = GetKey();
         DayLog daylog = null;
         try{
             try
             {
-                daylog = await container.ReadItemAsync<DayLog>("1", new PartitionKey("1"));
+                daylog = await container.ReadItemAsync<DayLog>(key, new PartitionKey(key));
             }
             catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
-                daylog = new DayLog { id = "1", medicine = 0, wakeUpTime = "8 AM" };
+                daylog = new DayLog { id = key, medicine = 0 };
                 daylog = await container.UpsertItemAsync(daylog, new PartitionKey(daylog.id));
             }
         } catch (Exception e)
