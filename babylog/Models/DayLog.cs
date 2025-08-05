@@ -13,23 +13,16 @@ public class DayLog
     public string nap2WakeTime { get; set; }
     public string nap3SleepTime { get; set; }
     public string nap3WakeTime { get; set; }
-    public string diaper1Time { get; set; }
+
+    public string?[] diaperTimes { get; set; }
     public string diaper1Type { get; set; }
-    public string diaper2Time { get; set; }
     public string diaper2Type { get; set; }
-    public string diaper3Time { get; set; }
     public string diaper3Type { get; set; }
-    public string diaper4Time { get; set; }
     public string diaper4Type { get; set; }
-    public string diaper5Time { get; set; }
     public string diaper5Type { get; set; }
-    public string diaper6Time { get; set; }
     public string diaper6Type { get; set; }
-    public string diaper7Time { get; set; }
     public string diaper7Type { get; set; }
-    public string diaper8Time { get; set; }
     public string diaper8Type { get; set; }
-    public string diaper9Time { get; set; }
     public string diaper9Type { get; set; }
     public string feed1Time { get; set; }
     public string feed1Type { get; set; }
