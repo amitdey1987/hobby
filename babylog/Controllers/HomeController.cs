@@ -56,21 +56,6 @@ public class HomeController : Controller
         {
             ViewData["MedicineColor"] = "#00FF00";
         }
-        if (TimeNullCurrentCompare(daylog.nap3WakeTime, daylog.nap3SleepTime, 2)
-            || TimeNullCurrentCompare(daylog.nap3SleepTime, daylog.nap2WakeTime, 3)
-            || TimeNullCurrentCompare(daylog.nap2WakeTime, daylog.nap2SleepTime, 2)
-            || TimeNullCurrentCompare(daylog.nap2SleepTime, daylog.nap1WakeTime, 3)
-            || TimeNullCurrentCompare(daylog.nap1WakeTime, daylog.wakeUpTime, 3)
-            || daylog.wakeUpTime == null)
-        {
-            ViewData["NapColor"] = "#FF0000";
-        }
-        else
-        {
-            ViewData["NapColor"] = "#00FF00";
-        }
-        ViewData["FeedColor"] = "#FF0000";
-        ViewData["DiaperColor"] = "#00FF00";
     }
 
     [HttpPost]
@@ -109,6 +94,8 @@ public class HomeController : Controller
                     feedTimes = new string?[9],
                     feedTypes = new string?[9],
                     feedQuantities = new float?[9],
+                    napSleepTimes = new string?[3],
+                    napWakeTimes = new string?[3],
                 };
                 daylog = await container.UpsertItemAsync(daylog, new PartitionKey(daylog.id));
             }

@@ -30,64 +30,24 @@
                             <b>Nap</b>
                             <table border="1" bgcolor=@ViewData["NapColor"]>                                
                                 <tr>                                        
-                                    <td>                
-                                        W
-                                    </td>
                                     <td> 
                                         <input type="time" asp-for="wakeUpTime"/>                
                                     </td>
                                 </tr>
-                                <tr><td>1</td></tr>
-                                <tr>
-                                    <td>                
-                                        S
-                                    </td>
-                                    <td> 
-                                        <input type="time" asp-for="nap1SleepTime"/>                
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>                
-                                        W
-                                    </td>
-                                    <td> 
-                                        <input type="time" asp-for="nap1WakeTime"/>                
-                                    </td>
-                                </tr>
-                                <tr><td>2</td></tr>
-                                <tr>
-                                    <td>                
-                                        S
-                                    </td>
-                                    <td> 
-                                        <input type="time" asp-for="nap2SleepTime"/>                
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>                
-                                        W
-                                    </td>
-                                    <td> 
-                                        <input type="time" asp-for="nap2WakeTime"/>                
-                                    </td>
-                                </tr>
-                                <tr><td>3</td></tr>
-                                <tr>
-                                    <td>                
-                                        S
-                                    </td>
-                                    <td> 
-                                        <input type="time" asp-for="nap3SleepTime"/>                
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>                
-                                        W
-                                    </td>
-                                    <td> 
-                                        <input type="time" asp-for="nap3WakeTime"/>                
-                                    </td>
-                                </tr>
+                                @for (int i = 0; i < 3; i ++)
+                                {
+                                    <tr><td>Nap @(i+1)</td></tr>
+                                    <tr>
+                                        <td> 
+                                            <input type="time" asp-for="napSleepTimes[@i]"/>                
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td> 
+                                            <input type="time" asp-for="napWakeTimes[@i]"/>                
+                                        </td>
+                                    </tr>  
+                                }                             
                             </table>
                         </td>
                         <td>
