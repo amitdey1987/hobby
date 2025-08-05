@@ -15,7 +15,7 @@
                             Time : @ViewData["Time"]
                         </td>
                     </tr>
-                    <tr>
+                    <tr bgcolor=@ViewData["MedicineColor"]>
                         <td>                
                             Medicine
                         </td>
@@ -28,7 +28,7 @@
                     <tr>
                         <td>
                             <b>Nap</b>
-                            <table border="1">                                
+                            <table border="1" bgcolor=@ViewData["NapColor"]>                                
                                 <tr>                                        
                                     <td>                
                                         W
@@ -92,7 +92,7 @@
                         </td>
                         <td>
                             <b>Feed</b>
-                            <table  border="1" bgcolor="#00FF00">
+                            <table  border="1" bgcolor=@ViewData["FeedColor"]>
                                 <tr>
                                     <td><input type="time" asp-for="feed1Time"/></td>
                                     <td>
@@ -196,7 +196,7 @@
                         </td>
                         <td>
                             <b>Diaper</b>
-                            <table  border="1">
+                            <table  border="1" bgcolor=@ViewData["DiaperColor"]>
                                 <tr>
                                     <td>
                                         <input type="time" asp-for="diaper1Time"/>

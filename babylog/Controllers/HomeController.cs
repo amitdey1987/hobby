@@ -21,14 +21,56 @@ public class HomeController : Controller
     {
         TimeZoneInfo pacificTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time");
         DateTime pacificTimeZoneNow = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, pacificTimeZone);
-        return pacificTimeZoneNow.ToShortDateString();
+        return pacificTimeZoneNow.ToShortDateString().Replace("/","-");
     }
 
-    private string GetTime()
+    private TimeSpan GetTime()
     {
         TimeZoneInfo pacificTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time");
         DateTime pacificTimeZoneNow = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, pacificTimeZone);
-        return pacificTimeZoneNow.TimeOfDay.ToString(@"hh\:mm");
+        return pacificTimeZoneNow.TimeOfDay;
+    }
+
+    public bool TimeNullCurrentCompare(string? shouldBeNull, string? shouldNotBeNull, int withinHours)
+    {
+        if (shouldBeNull != null || shouldNotBeNull == null)
+            return false;
+        var time = GetTime();
+        if (time.Subtract(TimeSpan.Parse(shouldNotBeNull)).Hours >= withinHours)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void UpdateViewData(DayLog daylog)
+    {
+        ViewData["Date"] = GetKey();
+        var time = GetTime();
+        ViewData["Time"] = time.ToString(@"hh\:mm");
+        if ((time >= TimeSpan.FromHours(12) && daylog.medicine < 5.0f) || (time >= TimeSpan.FromHours(15) && daylog.medicine < 10.0f))
+        {
+            ViewData["MedicineColor"] = "#FF0000";
+        }
+        else
+        {
+            ViewData["MedicineColor"] = "#00FF00";
+        }
+        if (TimeNullCurrentCompare(daylog.nap3WakeTime, daylog.nap3SleepTime, 2)
+            || TimeNullCurrentCompare(daylog.nap3SleepTime, daylog.nap2WakeTime, 3)
+            || TimeNullCurrentCompare(daylog.nap2WakeTime, daylog.nap2SleepTime, 2)
+            || TimeNullCurrentCompare(daylog.nap2SleepTime, daylog.nap1WakeTime, 3)
+            || TimeNullCurrentCompare(daylog.nap1WakeTime, daylog.wakeUpTime, 3)
+            || daylog.wakeUpTime == null)
+        {
+            ViewData["NapColor"] = "#FF0000";
+        }
+        else
+        {
+            ViewData["NapColor"] = "#00FF00";
+        }
+        ViewData["FeedColor"] = "#FF0000";
+        ViewData["DiaperColor"] = "#00FF00";
     }
 
     [HttpPost]
@@ -43,8 +85,7 @@ public class HomeController : Controller
         {
             ViewData["log"] = "post : " + daylog.id + "," + daylog.medicine + "," + daylog.wakeUpTime + " - " + e.Message;
         }
-        ViewData["Date"] = key;
-        ViewData["Time"] = GetTime();
+        UpdateViewData(daylog);
         return View(daylog);
     }
 
@@ -66,8 +107,7 @@ public class HomeController : Controller
         {
             ViewData["log"] = "post : " + daylog.id + "," + daylog.medicine + "," + daylog.wakeUpTime + " - " + e.Message;
         }
-        ViewData["Date"] = key;
-        ViewData["Time"] = GetTime();
+        UpdateViewData(daylog);
         return View(daylog);
     }
 
