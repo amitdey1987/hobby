@@ -50,16 +50,16 @@ public class HomeController : Controller
         ViewData["Time"] = time.ToString(@"hh\:mm");
         if ((time >= TimeSpan.FromHours(12) && daylog.medicine < 5.0f) || (time >= TimeSpan.FromHours(15) && daylog.medicine < 10.0f))
         {
-            ViewData["MedicineColor"] = "#FF0000";
+            ViewData["MedicineColor"] = "#f4c7d0";
         }
         else
         {
-            ViewData["MedicineColor"] = "#00FF00";
+            ViewData["MedicineColor"] = "#9faa74";
         }
-        ViewData["DiaperColor"] = "#FFFFFF";
+        ViewData["DiaperColor"] = "#d7dab3";
         if (daylog.diaperTimes[0] == null)
         {
-            ViewData["DiaperColor"] = "#FFBBBB";
+            ViewData["DiaperColor"] = "#f4c7d0";
         }
         else
         {
@@ -69,16 +69,16 @@ public class HomeController : Controller
                 {
                     if (time.Subtract(TimeSpan.Parse(daylog.diaperTimes[i])).Hours >= 3)
                     {
-                        ViewData["DiaperColor"] = "#FFBBBB";
+                        ViewData["DiaperColor"] = "#f4c7d0";
                     }
                     break;
                 }
             }
         }
-        ViewData["FeedColor"] = "#FFFFFF";
+        ViewData["FeedColor"] = "#9faa74";
         if (daylog.feedTimes[0] == null)
         {
-            ViewData["FeedColor"] = "#FFBBBB";
+            ViewData["FeedColor"] = "#f4c7d0";
         }
         else
         {
@@ -88,16 +88,16 @@ public class HomeController : Controller
                 {
                     if (time.Subtract(TimeSpan.Parse(daylog.feedTimes[i])).Hours >= 2)
                     {
-                        ViewData["FeedColor"] = "#FFBBBB";
+                        ViewData["FeedColor"] = "#f4c7d0";
                     }
                     break;
                 }
             }
         }
-        ViewData["NapColor"] = "#FFFFFF";
+        ViewData["NapColor"] = "#d7dab3";
         if (daylog.wakeUpTime == null)
         {
-            ViewData["NapColor"] = "#FFBBBB";
+            ViewData["NapColor"] = "#f4c7d0";
         }
         else
         {
@@ -107,16 +107,16 @@ public class HomeController : Controller
                 {
                     if (time.Subtract(TimeSpan.Parse(daylog.napSleepTimes[i])).Hours >= 2)
                     {
-                        ViewData["NapColor"] = "#FFBBBB";
+                        ViewData["NapColor"] = "#f4c7d0";
                     }
                     break;
                 }
-                else if (daylog.napWakeTimes[i] == null && (i == 0 || daylog.napSleepTimes[i - 1] != null))
+                else if (daylog.napSleepTimes[i] == null && daylog.napWakeTimes[i] == null && (i == 0 || daylog.napWakeTimes[i - 1] != null))
                 {
-                    var wakeTime = i == 0 ? daylog.wakeUpTime : daylog.napSleepTimes[i - 1];
+                    var wakeTime = i == 0 ? daylog.wakeUpTime : daylog.napWakeTimes[i - 1];
                     if (time.Subtract(TimeSpan.Parse(wakeTime)).Hours >= 3)
                     {
-                        ViewData["NapColor"] = "#FFBBBB";
+                        ViewData["NapColor"] = "#f4c7d0";
                     }
                     break;
                 }                      
