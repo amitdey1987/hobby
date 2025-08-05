@@ -100,7 +100,16 @@ public class HomeController : Controller
             }
             catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
-                daylog = new DayLog { id = key, medicine = 0, diaperTimes = new string?[9] };
+                daylog = new DayLog
+                {
+                    id = key,
+                    medicine = 0,
+                    diaperTimes = new string?[9],
+                    diaperTypes = new string?[9],
+                    feedTimes = new string?[9],
+                    feedTypes = new string?[9],
+                    feedQuantities = new float?[9],
+                };
                 daylog = await container.UpsertItemAsync(daylog, new PartitionKey(daylog.id));
             }
         } catch (Exception e)
