@@ -15,6 +15,7 @@ public class DayLog
     public string nap3WakeTime { get; set; }
 
     public string?[] diaperTimes { get; set; }
+    public string?[] diaperTypes { get; set; }
     public string diaper1Type { get; set; }
     public string diaper2Type { get; set; }
     public string diaper3Type { get; set; }
