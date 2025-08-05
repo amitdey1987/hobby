@@ -56,6 +56,72 @@ public class HomeController : Controller
         {
             ViewData["MedicineColor"] = "#00FF00";
         }
+        ViewData["DiaperColor"] = "#FFFFFF";
+        if (daylog.diaperTimes[0] == null)
+        {
+            ViewData["DiaperColor"] = "#FFBBBB";
+        }
+        else
+        {
+            for (int i = 8; i >= 0; i--)
+            {
+                if (daylog.diaperTimes[i] != null)
+                {
+                    if (time.Subtract(TimeSpan.Parse(daylog.diaperTimes[i])).Hours >= 3)
+                    {
+                        ViewData["DiaperColor"] = "#FFBBBB";
+                    }
+                    break;
+                }
+            }
+        }
+        ViewData["FeedColor"] = "#FFFFFF";
+        if (daylog.feedTimes[0] == null)
+        {
+            ViewData["FeedColor"] = "#FFBBBB";
+        }
+        else
+        {
+            for (int i = 8; i >= 0; i--)
+            {
+                if (daylog.feedTimes[i] != null)
+                {
+                    if (time.Subtract(TimeSpan.Parse(daylog.feedTimes[i])).Hours >= 2)
+                    {
+                        ViewData["FeedColor"] = "#FFBBBB";
+                    }
+                    break;
+                }
+            }
+        }
+        ViewData["NapColor"] = "#FFFFFF";
+        if (daylog.wakeUpTime == null)
+        {
+            ViewData["NapColor"] = "#FFBBBB";
+        }
+        else
+        {
+            for (int i = 2; i >= 0; i--)
+            {
+                if (daylog.napSleepTimes[i] != null && daylog.napWakeTimes[i] == null)
+                {
+                    if (time.Subtract(TimeSpan.Parse(daylog.napSleepTimes[i])).Hours >= 2)
+                    {
+                        ViewData["NapColor"] = "#FFBBBB";
+                    }
+                    break;
+                }
+                else if (daylog.napWakeTimes[i] == null && (i == 0 || daylog.napSleepTimes[i - 1] != null))
+                {
+                    var wakeTime = i == 0 ? daylog.wakeUpTime : daylog.napSleepTimes[i - 1];
+                    if (time.Subtract(TimeSpan.Parse(wakeTime)).Hours >= 3)
+                    {
+                        ViewData["NapColor"] = "#FFBBBB";
+                    }
+                    break;
+                }                      
+            }
+        }
     }
 
     [HttpPost]
