@@ -8,12 +8,9 @@
                 <input type="hidden" asp-for="id" />
                 <table bgcolor="#ece3d2">
                     <tr>
-                        <td colspan="8"><input type="submit" value="Save/Refresh" /></td>
-                    </tr>
-                    <tr>
                         <td bgcolor="@ViewData["NapColor"]">Nap</td>
                         <td>@ViewData["Date"]</td>
-                        <td></td>
+                        <td><input type="submit" value="Save/Refresh" /></td>
                         <td>@ViewData["Time"]</td>
                         <td bgcolor="@ViewData["MedicineColor"]">Medicine</td>
                         <td bgcolor="@ViewData["MedicineColor"]"><input asp-for="medicine" Size="2"/></td>

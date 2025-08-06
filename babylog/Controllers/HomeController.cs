@@ -78,7 +78,7 @@ public class HomeController : Controller
         ViewData["FeedColor"] = "#9faa74";
         if (daylog.feedTimes[0] == null)
         {
-            ViewData["FeedColor"] = "#f4c7d0";
+            ViewData["FeedColor"] = "#c66f80";
         }
         else
         {
@@ -88,7 +88,7 @@ public class HomeController : Controller
                 {
                     if (time.Subtract(TimeSpan.Parse(daylog.feedTimes[i])).Hours >= 2)
                     {
-                        ViewData["FeedColor"] = "#f4c7d0";
+                        ViewData["FeedColor"] = "#c66f80";
                     }
                     break;
                 }
