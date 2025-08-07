@@ -13,5 +13,5 @@ public class DayLog
     public string?[] diaperTypes { get; set; }
     public string?[] feedTimes { get; set; }
     public string?[] feedTypes { get; set; }
-    public float?[] feedQuantities { get; set; }    
+    public string?[] feedQuantities { get; set; }    
 }

@@ -159,7 +159,7 @@ public class HomeController : Controller
                     diaperTypes = new string?[9],
                     feedTimes = new string?[9],
                     feedTypes = new string?[9],
-                    feedQuantities = new float?[9],
+                    feedQuantities = new string?[9],
                     napSleepTimes = new string?[3],
                     napWakeTimes = new string?[3],
                 };
