@@ -48,12 +48,13 @@ public class HomeController : Controller
         ViewData["Date"] = GetKey();
         var time = GetTime();
         ViewData["Time"] = time.ToString(@"hh\:mm");
-        if ((time >= TimeSpan.FromHours(12) && daylog.medicine < 5.0f) || (time >= TimeSpan.FromHours(15) && daylog.medicine < 10.0f))
+        if ((time >= TimeSpan.FromHours(12) && daylog.medicine < 0.5f) || (time >= TimeSpan.FromHours(15) && daylog.medicine < 1.0f))
         {
+            ViewData["log"] = "Give medicine soon.";
             ViewData["MedicineColor"] = "#f4c7d0";
         }
         else
-        {
+        {            
             ViewData["MedicineColor"] = "#9faa74";
         }
         ViewData["DiaperColor"] = "#d7dab3";
@@ -69,6 +70,7 @@ public class HomeController : Controller
                 {
                     if (time.Subtract(TimeSpan.Parse(daylog.diaperTimes[i])).Hours >= 3)
                     {
+                        ViewData["log"] = "Change diaper soon.";
                         ViewData["DiaperColor"] = "#f4c7d0";
                     }
                     break;
@@ -107,6 +109,7 @@ public class HomeController : Controller
                 {
                     if (time.Subtract(TimeSpan.Parse(daylog.napSleepTimes[i])).Hours >= 2)
                     {
+                        ViewData["log"] = "Wake baby soon.";
                         ViewData["NapColor"] = "#f4c7d0";
                     }
                     break;
@@ -116,12 +119,34 @@ public class HomeController : Controller
                     var wakeTime = i == 0 ? daylog.wakeUpTime : daylog.napWakeTimes[i - 1];
                     if (time.Subtract(TimeSpan.Parse(wakeTime)).Hours >= 3)
                     {
+                        ViewData["log"] = "Put baby to sleep soon.";
                         ViewData["NapColor"] = "#f4c7d0";
                     }
                     break;
-                }                      
+                }
             }
         }
+        TimeSpan totalNap = TimeSpan.Zero;
+        for (int i = 0; i < 3; i++)
+        {
+            if (daylog.napSleepTimes[i] != null && daylog.napWakeTimes[i] != null)
+            {
+                totalNap = totalNap.Add(TimeSpan.Parse(daylog.napWakeTimes[i]).Subtract(TimeSpan.Parse(daylog.napSleepTimes[i])));
+            }
+        }
+        ViewData["TotalNap"] = totalNap;
+        float totalMilk = 0.0f;
+        for (int i = 0; i < 9; i++)
+        {
+            if (daylog.feedTypes[i] != null && daylog.feedTypes[i] == "Bottle" && daylog.feedQuantities[i] != null)
+            {
+                if (float.TryParse(daylog.feedQuantities[i], out float feedQuanity))
+                {
+                    totalMilk += feedQuanity;
+                }
+            }
+        }
+        ViewData["TotalMilk"] = totalMilk;
     }
 
     [HttpPost]
