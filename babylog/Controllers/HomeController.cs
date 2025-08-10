@@ -48,13 +48,15 @@ public class HomeController : Controller
         ViewData["Date"] = GetKey();
         var time = GetTime();
         ViewData["Time"] = time.ToString(@"hh\:mm");
-        if ((time >= TimeSpan.FromHours(12) && daylog.medicine < 0.5f) || (time >= TimeSpan.FromHours(15) && daylog.medicine < 1.0f))
+        var totalMedicine = daylog.medicine + daylog.medicine2;
+        ViewData["TotalMedicine"] = totalMedicine;
+        if ((time >= TimeSpan.FromHours(12) && totalMedicine < 0.5f) || (time >= TimeSpan.FromHours(15) && totalMedicine < 1.0f))
         {
             ViewData["log"] = "Give medicine soon.";
             ViewData["MedicineColor"] = "#f4c7d0";
         }
         else
-        {            
+        {
             ViewData["MedicineColor"] = "#9faa74";
         }
         ViewData["DiaperColor"] = "#d7dab3";
@@ -180,6 +182,7 @@ public class HomeController : Controller
                 {
                     id = key,
                     medicine = 0,
+                    medicine2 = 0,
                     diaperTimes = new string?[9],
                     diaperTypes = new string?[9],
                     feedTimes = new string?[9],

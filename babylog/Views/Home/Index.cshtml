@@ -13,8 +13,15 @@
                 <td><input type="submit" value="Save/Refresh" /></td>
                 <td>@ViewData["Time"]</td>
                 <td bgcolor="@ViewData["MedicineColor"]">Medicine</td>
-                <td bgcolor="@ViewData["MedicineColor"]"><input asp-for="medicine" Size="3"/></td>
-                <td>Total Milk</td>
+                <td bgcolor="@ViewData["MedicineColor"]">
+                    <table>
+                        <tr>
+                            <td><input asp-for="medicine" Size="3"/></td>
+                            <td><input asp-for="medicine2" Size="3"/></td>
+                        </tr>
+                    </table>
+                </td>
+                <td>Milk</td>
                 <td>@ViewData["TotalMilk"] Oz</td>
             </tr>
             <tr>
@@ -24,7 +31,7 @@
                 <td bgcolor="@ViewData["FeedColor"]"></td>
                 <td bgcolor="@ViewData["DiaperColor"]">Diaper</td>
                 <td bgcolor="@ViewData["DiaperColor"]"></td>
-                <td>Total Nap</td>
+                <td>Nap</td>
                 <td>@ViewData["TotalNap"]</td>
             </tr>
             @for (int i = 0; i < 9; i ++)
@@ -51,8 +58,7 @@
                             <option value="Snacks">Snacks</option>
                         </select>
                     </td>
-                    <td bgcolor="@ViewData["FeedColor"]"><input asp-for="feedQuantities[@i]" Size="3"/></td>
-                    <td bgcolor="@ViewData["DiaperColor"]"><input type="time" asp-for="diaperTimes[@i]"/></td>
+                    <td bgcolor="@ViewData["FeedColor"]"><input asp-for="feedQuantities[@i]" Size="3"/></td>                    
                     <td bgcolor="@ViewData["DiaperColor"]">
                         <select asp-for="diaperTypes[@i]">
                             <option value=""></option>
@@ -60,9 +66,19 @@
                             <option value="Poo">Poo</option>
                         </select>
                     </td>
-                    @if (i==0)
+                    <td bgcolor="@ViewData["DiaperColor"]"><input type="time" asp-for="diaperTimes[@i]"/></td>
+                    @if(i==0)
                     {
-                        <td rowspan="9">@ViewData["log"]</td>
+                        <td>Medicine</td>
+                        <td>@ViewData["TotalMedicine"]</td>
+                    }
+                    @if (i==1)
+                    {
+                        <td rowspan="4" colspan="2">@ViewData["log"]</td>
+                    }
+                    @if (i==5)
+                    {
+                        <td rowspan="4" colspan="2"><input asp-for="notes"/></td>
                     }
                 </tr>
             }
