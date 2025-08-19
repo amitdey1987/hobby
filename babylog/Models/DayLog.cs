@@ -15,6 +15,7 @@ public class DayLog
     public string?[] diaperTypes { get; set; }
     public string?[] feedTimes { get; set; }
     public string?[] feedTypes { get; set; }
-    public string?[] feedQuantities { get; set; }    
+    public string?[] feedQuantities { get; set; }
     public string notes { get; set; }
+    public string sleepTime { get; set; }
 }

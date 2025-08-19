@@ -50,6 +50,7 @@ public class HomeController : Controller
         ViewData["Time"] = time.ToString(@"hh\:mm");
         var totalMedicine = daylog.medicine + daylog.medicine2;
         ViewData["TotalMedicine"] = totalMedicine;
+        ViewData["log"] = "You are doing great.";
         if ((time >= TimeSpan.FromHours(12) && totalMedicine < 0.5f) || (time >= TimeSpan.FromHours(15) && totalMedicine < 1.0f))
         {
             ViewData["log"] = "Give medicine soon.";
@@ -99,7 +100,11 @@ public class HomeController : Controller
             }
         }
         ViewData["NapColor"] = "#d7dab3";
-        if (daylog.wakeUpTime == null)
+        if (daylog.sleepTime != null)
+        {
+            ViewData["log"] = "Great job today. Take some time out for yourself.";
+        }
+        else if (daylog.wakeUpTime == null)
         {
             ViewData["NapColor"] = "#f4c7d0";
         }
@@ -138,7 +143,7 @@ public class HomeController : Controller
         }
         ViewData["TotalNap"] = totalNap;
         float totalMilk = 0.0f;
-        for (int i = 0; i < 9; i++)
+        for (int i = 0; i < 11; i++)
         {
             if (daylog.feedTypes[i] != null && daylog.feedTypes[i] == "Bottle" && daylog.feedQuantities[i] != null)
             {
@@ -183,11 +188,11 @@ public class HomeController : Controller
                     id = key,
                     medicine = 0,
                     medicine2 = 0,
-                    diaperTimes = new string?[9],
-                    diaperTypes = new string?[9],
-                    feedTimes = new string?[9],
-                    feedTypes = new string?[9],
-                    feedQuantities = new string?[9],
+                    diaperTimes = new string?[11],
+                    diaperTypes = new string?[11],
+                    feedTimes = new string?[11],
+                    feedTypes = new string?[11],
+                    feedQuantities = new string?[11],
                     napSleepTimes = new string?[3],
                     napWakeTimes = new string?[3],
                 };
